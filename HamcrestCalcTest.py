@@ -1,4 +1,7 @@
 from hamcrest import *
+from EmptyListHamcrest import isGivenListIsEmpty
+from ResultIsHigherThanTen import ResultHigherThanTen
+
 import unittest
 import SimpleCalculator
 from SimpleCalculator import Calculator
@@ -29,4 +32,10 @@ class TestCalc(unittest.TestCase):
 
     def testContainInList(self):
         assert_that(calc.add_string_to_list(), has_item('example'))
+
+    def testEmptyList(self):
+        assert_that(calc.add_numbers_to_list(), is_not(isGivenListIsEmpty()))
+
+    def testHigherThan10(self):
+        assert_that(calc.sum(), is_not(ResultHigherThanTen))
 
